@@ -1,14 +1,9 @@
-import { initSignUp } from './sign-up.js';
+import { setupProfile } from './auth.js';
 
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
-  // Initialize sign-up functionality
-  initSignUp();
-  
-  // Any other initialization code for the main application can go here
-  
-  // Show/hide "Other" fields when checkbox is clicked
+  // Initialize checkbox functionality for "Other" fields
   const otherClientCheckbox = document.getElementById('other-client');
   const otherPswCheckbox = document.getElementById('other-psw');
   
@@ -30,19 +25,46 @@ function init() {
     });
   }
   
-  // Show appropriate preference section based on user type
-  const clientButton = document.getElementById('signup-button');
-  const pswButton = document.getElementById('signup-psw-button');
+  // Set up profile selection buttons
+  const clientButton = document.getElementById('profile-client-button');
+  const pswButton = document.getElementById('profile-psw-button');
   
-  if (clientButton && pswButton) {
+  if (clientButton) {
     clientButton.addEventListener('click', function() {
-      // When we reach step 3, show client preferences and hide PSW preferences
       localStorage.setItem('userType', 'client');
+      setupProfile('client');
     });
-    
+  }
+  
+  if (pswButton) {
     pswButton.addEventListener('click', function() {
-      // When we reach step 3, show PSW preferences and hide client preferences
       localStorage.setItem('userType', 'psw');
+      setupProfile('psw');
+    });
+  }
+  
+  // Set up the dashboard buttons
+  const dashboardButton = document.getElementById('goto-dashboard');
+  if (dashboardButton) {
+    dashboardButton.addEventListener('click', function() {
+      const userType = sessionStorage.getItem('userType') || localStorage.getItem('userType') || 'client';
+      const dashboardPath = userType === 'psw' ? '/views/psw/dashboard.html' : '/views/client/dashboard.html';
+      window.location.href = dashboardPath;
+    });
+  }
+  
+  const additionalDashboardButton = document.getElementById('goto-dashboard-button');
+  if (additionalDashboardButton) {
+    additionalDashboardButton.addEventListener('click', function() {
+      window.location.href = 'dashboard.html';
+    });
+  }
+  
+  // Set up cancel button in signup
+  const cancelSignupButton = document.querySelector('.button.button-outline');
+  if (cancelSignupButton && !cancelSignupButton.id) {
+    cancelSignupButton.addEventListener('click', function() {
+      window.location.reload();
     });
   }
   

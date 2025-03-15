@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Your Profile - CareConnect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+  <script type="module" src="/js/profile-setup.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h1><img src="/image/logo/careConnect.jpeg" alt="CareConnect Logo" class="logo-image"> CareConnect</h1>
+        <p>Tell us more about yourself to complete your profile</p>
+      </div>
+      <div class="card-content">
+        <!-- Multi-step profile setup container -->
+        <div id="profile-container">
+          <!-- Progress indicator -->
+          <div class="progress-container">
+            <div id="step-indicator">Step 1 of 3</div>
+            <div class="progress-bar">
+              <div
+                id="profile-progress"
+                class="progress"
+                style="width: 33%"
+                aria-valuenow="33"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Step 1: Basic Information -->
+          <div id="profile-step-1" class="profile-step">
+            <h2><i class="fas fa-user-circle"></i> Basic Information</h2>
+
+            <div class="field-group">
+              <div class="form-group">
+                <label for="first-name"
+                  ><i class="fas fa-user"></i> First Name</label
+                >
+                <input
+                  type="text"
+                  id="first-name"
+                  name="first-name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="last-name"
+                  ><i class="fas fa-user"></i> Last Name</label
+                >
+                <input type="text" id="last-name" name="last-name" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="age"
+                ><i class="fas fa-birthday-cake"></i> Age</label
+              >
+              <input type="number" id="age" name="age" min="18" required />
+              <p class="helper-text">
+                You must be at least 18 years old to use our platform
+              </p>
+            </div>
+
+            <div class="button-container">
+              <button
+                class="button button-outline"
+                id="cancel-profile-setup"
+              >
+                <i class="fas fa-times"></i> Cancel
+              </button>
+              <button class="button button-default next-step-button">
+                Continue <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Contact Information -->
+          <div id="profile-step-2" class="profile-step hidden">
+            <h2><i class="fas fa-address-card"></i> Contact Information</h2>
+
+            <div class="form-group">
+              <label for="phone"
+                ><i class="fas fa-phone"></i> Phone Number</label
+              >
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+
+            <!-- Address Fields -->
+            <div class="form-group">
+              <label for="street-address"
+                ><i class="fas fa-home"></i> Street Address</label
+              >
+              <input
+                type="text"
+                id="street-address"
+                name="street-address"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="apartment"
+                ><i class="fas fa-building"></i> Apartment/Unit
+                (optional)</label
+              >
+              <input type="text" id="apartment" name="apartment" />
+            </div>
+
+            <div class="field-group">
+              <div class="form-group">
+                <label for="city"><i class="fas fa-city"></i> City</label>
+                <input type="text" id="city" name="city" required />
+              </div>
+
+              <div class="form-group">
+                <label for="province"
+                  ><i class="fas fa-map-marker-alt"></i> Province</label
+                >
+                <select id="province" name="province" required>
+                  <option value="" disabled selected>
+                    Select a province
+                  </option>
+                  <option value="AB">Alberta</option>
+                  <option value="BC">British Columbia</option>
+                  <option value="MB">Manitoba</option>
+                  <option value="NB">New Brunswick</option>
+                  <option value="NL">Newfoundland and Labrador</option>
+                  <option value="NS">Nova Scotia</option>
+                  <option value="NT">Northwest Territories</option>
+                  <option value="NU">Nunavut</option>
+                  <option value="ON">Ontario</option>
+                  <option value="PE">Prince Edward Island</option>
+                  <option value="QC">Quebec</option>
+                  <option value="SK">Saskatchewan</option>
+                  <option value="YT">Yukon</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="postal-code"
+                  ><i class="fas fa-mail-bulk"></i> Postal Code</label
+                >
+                <p id="postal-code-error" class="error-message hidden">
+                  Please enter a valid Canadian postal code (A1A 1A1)
+                </p>
+                <input
+                  type="text"
+                  id="postal-code"
+                  name="postal-code"
+                  placeholder="A1A 1A1"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="button-container">
+              <button class="button button-outline prev-step-button">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button class="button button-default next-step-button">
+                Continue <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Preferences -->
+          <div id="profile-step-3" class="profile-step hidden">
+            <!-- Client Preferences Section (shown for client signups) -->
+            <div id="client-preferences-section" class="preferences-section">
+              <h2><i class="fas fa-clipboard-list"></i> Your Care Needs</h2>
+              <p class="form-intro">
+                Select the types of care services you're looking for:
+              </p>
+
+              <div class="checkbox-container">
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="personal-hygiene"
+                    name="care-needs"
+                    value="personal-hygiene"
+                  />
+                  <label for="personal-hygiene"
+                    >Personal hygiene assistance (bathing, grooming)</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="mobility-assistance"
+                    name="care-needs"
+                    value="mobility-assistance"
+                  />
+                  <label for="mobility-assistance"
+                    >Mobility assistance (transfers, walking)</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="meal-preparation"
+                    name="care-needs"
+                    value="meal-preparation"
+                  />
+                  <label for="meal-preparation">Meal preparation</label>
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="medication-reminders"
+                    name="care-needs"
+                    value="medication-reminders"
+                  />
+                  <label for="medication-reminders"
+                    >Medication reminders</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="housekeeping"
+                    name="care-needs"
+                    value="housekeeping"
+                  />
+                  <label for="housekeeping">Light housekeeping</label>
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="transportation"
+                    name="care-needs"
+                    value="transportation"
+                  />
+                  <label for="transportation"
+                    >Transportation to appointments</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="companionship"
+                    name="care-needs"
+                    value="companionship"
+                  />
+                  <label for="companionship"
+                    >Companionship and social engagement</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="dementia-care"
+                    name="care-needs"
+                    value="dementia-care"
+                  />
+                  <label for="dementia-care">Specialized dementia care</label>
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="overnight-care"
+                    name="care-needs"
+                    value="overnight-care"
+                  />
+                  <label for="overnight-care">Overnight care</label>
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="respite-care"
+                    name="care-needs"
+                    value="respite-care"
+                  />
+                  <label for="respite-care"
+                    >Respite care for family caregivers</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="other-client"
+                    name="care-needs"
+                    value="other"
+                  />
+                  <label for="other-client"
+                    >Other needs (please specify)</label
+                  >
+                </div>
+
+                <div class="form-group other-field" id="other-client-field">
+                  <textarea
+                    id="other-client-needs"
+                    name="other-client-needs"
+                    rows="3"
+                    placeholder="Please describe any other care needs you have..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="client-additional-info"
+                  ><i class="fas fa-info-circle"></i> Additional
+                  Information</label
+                >
+                <textarea
+                  id="client-additional-info"
+                  name="client-additional-info"
+                  rows="3"
+                  placeholder="Tell us more about your specific situation or any special requirements..."
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- PSW Specializations Section (shown for PSW signups) -->
+            <div
+              id="psw-preferences-section"
+              class="preferences-section hidden"
+            >
+              <h2><i class="fas fa-user-md"></i> Your Specializations</h2>
+              <p class="form-intro">
+                Select the care services you're qualified to provide:
+              </p>
+
+              <div class="checkbox-container">
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="personal-care"
+                    name="specializations"
+                    value="personal-care"
+                  />
+                  <label for="personal-care"
+                    >Personal care (bathing, grooming, dressing)</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="transfer-assistance"
+                    name="specializations"
+                    value="transfer-assistance"
+                  />
+                  <label for="transfer-assistance"
+                    >Transfer assistance and mobility support</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="feeding-assistance"
+                    name="specializations"
+                    value="feeding-assistance"
+                  />
+                  <label for="feeding-assistance">Feeding assistance</label>
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="medication-administration"
+                    name="specializations"
+                    value="medication-administration"
+                  />
+                  <label for="medication-administration"
+                    >Medication administration</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="wound-care"
+                    name="specializations"
+                    value="wound-care"
+                  />
+                  <label for="wound-care">Basic wound care</label>
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="vital-signs"
+                    name="specializations"
+                    value="vital-signs"
+                  />
+                  <label for="vital-signs">Vital signs monitoring</label>
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="dementia-experience"
+                    name="specializations"
+                    value="dementia-experience"
+                  />
+                  <label for="dementia-experience"
+                    >Dementia care experience</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="palliative-care"
+                    name="specializations"
+                    value="palliative-care"
+                  />
+                  <label for="palliative-care"
+                    >Palliative care experience</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="mental-health"
+                    name="specializations"
+                    value="mental-health"
+                  />
+                  <label for="mental-health">Mental health support</label>
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="rehabilitation"
+                    name="specializations"
+                    value="rehabilitation"
+                  />
+                  <label for="rehabilitation"
+                    >Post-surgery rehabilitation support</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="housekeeping-cooking"
+                    name="specializations"
+                    value="housekeeping-cooking"
+                  />
+                  <label for="housekeeping-cooking"
+                    >Housekeeping and cooking</label
+                  >
+                </div>
+
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="other-psw"
+                    name="specializations"
+                    value="other"
+                  />
+                  <label for="other-psw"
+                    >Other specializations (please specify)</label
+                  >
+                </div>
+
+                <div class="form-group other-field" id="other-psw-field">
+                  <textarea
+                    id="other-psw-specializations"
+                    name="other-psw-specializations"
+                    rows="3"
+                    placeholder="Please describe any other specializations or certifications you have..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="years-experience"
+                  ><i class="fas fa-calendar-alt"></i> Years of
+                  Experience</label
+                >
+                <input
+                  type="number"
+                  id="years-experience"
+                  name="years-experience"
+                  min="0"
+                  step="1"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="psw-additional-info"
+                  ><i class="fas fa-info-circle"></i> Additional
+                  Information</label
+                >
+                <textarea
+                  id="psw-additional-info"
+                  name="psw-additional-info"
+                  rows="3"
+                  placeholder="Tell us more about your experience and approach to caregiving..."
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="button-container">
+              <button class="button button-outline prev-step-button">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button class="button button-default next-step-button">
+                <i class="fas fa-check-circle"></i> Complete Profile
+              </button>
+            </div>
+          </div>
+
+          <!-- Completion Step -->
+          <div id="profile-completion" class="profile-step hidden">
+            <div class="completion-message">
+              <div class="success-checkmark">
+                <i class="fas fa-check"></i>
+              </div>
+              <h2>Profile Complete!</h2>
+              <p>
+                Thank you for setting up your profile with CareConnect. You're all set!
+              </p>
+              <button id="goto-dashboard" class="button button-default">
+                <i class="fas fa-tachometer-alt"></i> Go to Dashboard
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
