@@ -4,28 +4,28 @@
 
 ## 💡 Inspiration
 
-The healthcare sector faces a significant challenge: efficiently connecting qualified personal support workers (PSWs) with individuals requiring care. Our team members witnessed firsthand how family members struggled to find reliable care providers, often relying on outdated agencies or word-of-mouth referrals. CareConnect was born from this frustration - a modern platform that seamlessly connects care providers with those who need support.
+The healthcare sector faces a significant challenge: efficiently connecting qualified personal support workers (PSWs) with individuals requiring care. Our team members witnessed firsthand how family members struggled to find reliable care providers, often relying on outdated agencies or word-of-mouth referrals. CareConnect was born from this frustration - a modern platform that seamlessly connects care providers with those who need support, developed specifically for cuHacking 2025.
 
 ## 🔍 What it does
 
-CareConnect is a comprehensive web platform that:
+CareConnect is a comprehensive web platform with an intuitive, user-friendly interface that:
 
-- **For Clients**: Allows individuals or families to create profiles detailing their specific care needs, browse qualified PSWs in their area, and schedule care services
-- **For PSWs**: Provides a professional platform to showcase skills and specializations, find suitable clients, and manage scheduling
+- **For Clients**: Allows individuals or families to create profiles detailing their specific care needs, browse qualified PSWs in their area, and schedule care services with just a few clicks
+- **For PSWs**: Provides a professional platform to showcase skills and specializations, find suitable clients, and manage scheduling efficiently
 
 Key features include:
-- User-friendly onboarding flow with specialized paths for clients and care providers
-- Location-based matching system
-- Verification of PSW credentials
-- Secure communication channels
-- Schedule coordination and management
+- Streamlined, intuitive onboarding flow with specialized paths for clients and care providers
+- Smart location-based matching system to connect local PSWs with nearby clients
+- Simple verification process for PSW credentials
+- User-friendly communication channels for direct connection
+- Hassle-free schedule coordination and management
 - Rating and review system
 
 ## ⚙️ How we built it
 
 CareConnect is built using a modern tech stack:
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **Frontend**: HTML5, CSS3, JavaScript
 - **Styling**: Custom CSS with CSS variables for consistent theming
 - **Authentication**: Integration with Auth0 for secure user management
 - **Icons/UI**: Font Awesome and custom components
@@ -33,7 +33,7 @@ CareConnect is built using a modern tech stack:
 
 ## 🛑 Challenges we ran into
 
-During our 24-hour hackathon journey, we faced several challenges:
+During our 36-hour hackathon journey, we faced several challenges:
 
 1. **User Flow Complexity**: Creating intuitive yet comprehensive onboarding flows for two distinct user types
 2. **Authentication Integration**: Implementing secure OAuth flows with proper role management
@@ -93,10 +93,9 @@ We're excited about the future of CareConnect and plan to:
 
 ## 👥 Team
 
-- [Team Member 1] - Frontend Developer
-- [Team Member 2] - UX/UI Designer
-- [Team Member 3] - Backend Developer
-- [Team Member 4] - Project Manager
+- [Cheng Dong] - Frontend Developer
+- [Theo Van Dussen] - Backend Developer
+- [Aymen Loudiy] - Backend Developer
 
 ---
 
