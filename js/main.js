@@ -7,19 +7,28 @@ function init() {
   initSignUp();
   
   // Any other initialization code for the main application can go here
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Show/hide "Other" fields when checkbox is clicked
-  document.getElementById('other-client')?.addEventListener('change', function() {
-    const otherField = document.getElementById('other-client-field');
-    otherField.style.display = this.checked ? 'block' : 'none';
-  });
   
-  document.getElementById('other-psw')?.addEventListener('change', function() {
-    const otherField = document.getElementById('other-psw-field');
-    otherField.style.display = this.checked ? 'block' : 'none';
-  });
+  // Show/hide "Other" fields when checkbox is clicked
+  const otherClientCheckbox = document.getElementById('other-client');
+  const otherPswCheckbox = document.getElementById('other-psw');
+  
+  if (otherClientCheckbox) {
+    otherClientCheckbox.addEventListener('change', function() {
+      const otherField = document.getElementById('other-client-field');
+      if (otherField) {
+        otherField.style.display = this.checked ? 'block' : 'none';
+      }
+    });
+  }
+  
+  if (otherPswCheckbox) {
+    otherPswCheckbox.addEventListener('change', function() {
+      const otherField = document.getElementById('other-psw-field');
+      if (otherField) {
+        otherField.style.display = this.checked ? 'block' : 'none';
+      }
+    });
+  }
   
   // Show appropriate preference section based on user type
   const clientButton = document.getElementById('signup-button');
@@ -44,11 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const pswSection = document.getElementById('psw-preferences-section');
     
     if (userType === 'client') {
-      clientSection.classList.remove('hidden');
-      pswSection.classList.add('hidden');
+      if (clientSection) clientSection.classList.remove('hidden');
+      if (pswSection) pswSection.classList.add('hidden');
     } else if (userType === 'psw') {
-      pswSection.classList.remove('hidden');
-      clientSection.classList.add('hidden');
+      if (pswSection) pswSection.classList.remove('hidden');
+      if (clientSection) clientSection.classList.add('hidden');
     }
   };
   
@@ -58,13 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
     nextButtons.forEach(button => {
       button.addEventListener('click', function() {
         // If moving to step 3, show the appropriate section
-        const currentStep = parseInt(document.querySelector('#step-indicator').textContent.split(' ')[1]);
+        const currentStep = parseInt(document.querySelector('#step-indicator')?.textContent.split(' ')[1]);
         if (currentStep === 2) { // Moving from step 2 to step 3
           showRightPreferenceSection();
         }
-        
-        // Your existing step navigation code...
       });
     });
   }
-});
+}

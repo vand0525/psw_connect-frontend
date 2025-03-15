@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSW Dashboard - CareConnect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="header-container">
+      <div class="logo-section">
+        <img src="/image/logo/careConnect.jpeg" alt="CareConnect Logo" class="logo-image">
+        <h1>CareConnect</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li class="active"><a href="/psw/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li><a href="/psw/browse-tasks"><i class="fas fa-search"></i> Browse Tasks</a></li>
+          <li><a href="/psw/profile"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+      </nav>
+      <div class="user-section">
+        <span id="user-name"></span>
+        <div class="user-avatar">
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-toggle"><i class="fas fa-chevron-down"></i></button>
+          <div class="dropdown-menu">
+            <a href="/psw/profile"><i class="fas fa-user-cog"></i> Settings</a>
+            <a href="/sign-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-content">
+    <div class="location-banner">
+      <i class="fas fa-map-marker-alt"></i>
+      <span id="user-location">Loading your location...</span>
+    </div>
+    
+    <div class="dashboard-container">
+      <div class="welcome-section">
+        <h2>Welcome to your PSW dashboard</h2>
+        <p>From here you can manage your care services and connect with clients in need.</p>
+      </div>
+      
+      <div class="dashboard-grid">
+        <div class="card dashboard-card">
+          <div class="card-icon"><i class="fas fa-tasks"></i></div>
+          <h3>Available Tasks</h3>
+          <p>Browse and apply for care tasks in your area.</p>
+          <a href="/psw/browse-tasks" class="button button-default">Browse Tasks</a>
+        </div>
+        <div class="card dashboard-card">
+          <div class="card-icon"><i class="fas fa-users"></i></div>
+          <h3>My Clients</h3>
+          <p>View and message the clients you're currently working with.</p>
+          <a href="#" class="button button-default">View Clients</a>
+        </div>
+        <div class="card dashboard-card">
+          <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+          <h3>My Schedule</h3>
+          <p>Manage your upcoming care sessions and availability.</p>
+          <a href="#" class="button button-default">View Schedule</a>
+        </div>
+        <div class="card dashboard-card">
+          <div class="card-icon"><i class="fas fa-star"></i></div>
+          <h3>My Ratings</h3>
+          <p>See reviews and ratings from clients you've worked with.</p>
+          <a href="#" class="button button-default">View Ratings</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

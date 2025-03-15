@@ -517,3 +517,13 @@ input:focus, textarea:focus, select:focus {
   background-color: rgba(59, 130, 246, 0.05);
   border-radius: var(--border-radius-sm);
 }
+
+/* Logo image styling */
+.logo-image {
+  height: 40px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  border-radius: var(--border-radius-sm);
+}

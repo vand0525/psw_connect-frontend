@@ -1,53 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CareConnect</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/main.css" />
-    <script type="module" src="./js/main.js"></script>
-    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
-  </head>
 
-  <body>
-    <div class="container">
-      <div class="card">
-        <div class="card-header">
-          <h1><i class="fas fa-hands-helping"></i> CareConnect</h1>
-          <p>Connecting care providers with those who need support</p>
-        </div>
-        <div class="card-content">
-          <!-- Initial selection page -->
-          <div id="signup-selection">
-            <p class="center" style="font-size: 1.1em">
-              Please select how you would like to use our platform:
-            </p>
-            <div class="grid">
-              <!-- Option 1: I Need Care -->
-              <div class="card-inner">
-                <div class="icon icon-heart">
-                  <i class="fas fa-heart"></i>
-                </div>
-                <h2>I Need Care</h2>
-                <p>
-                  Sign up as a client to find qualified personal support workers
-                  who can provide the care you need.
-                </p>
-                <button
-                  id="signup-button"
-                  data-type="client"
-                  class="button button-default"
-                >
-                  <i class="fas fa-user-plus"></i> Sign up as Client
-                </button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareConnect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css" />
+  <script type="module" src="/js/main.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h1><img src="/image/logo/careConnect.jpeg" alt="CareConnect Logo" class="logo-image"> CareConnect</h1>
+        <p>Connecting care providers with those who need support</p>
+      </div>
+      <div class="card-content">
+        <!-- Initial selection page -->
+        <div id="signup-selection">
+          <p class="center" style="font-size: 1.1em;">Please select how you would like to use our platform:</p>
+          <div class="grid">
+            <!-- Option 1: I Need Care -->
+            <div class="card-inner">
+              <div class="icon icon-heart">
+                <i class="fas fa-heart"></i>
               </div>
               <!-- Option 2: I Provide Care -->
               <div class="card-inner">
