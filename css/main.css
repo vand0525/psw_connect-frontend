@@ -164,10 +164,9 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 30px;
   margin-bottom: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: box-shadow 0.3s;
 }
 .card:hover {
-  transform: rotateY(5deg);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 /* Header styles */
