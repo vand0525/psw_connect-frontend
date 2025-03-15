@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CareConnect</title>
   <link rel="stylesheet" href="./css/main.css" />
-  <script type="module" src=".js/main.js"></script>
+  <script type="module" src="./js/main.js"></script>
 </head>
 
 <body>
@@ -17,43 +17,120 @@
         <p>Connecting care providers with those who need support</p>
       </div>
       <div class="card-content">
-        <p class="center" style="font-size: 1.1em;">Please select how you would like to use our platform:</p>
-        <div class="grid">
-          <!-- Option 1: I Need Care -->
-          <div class="card">
-            <div class="card-inner">
-              <div class="icon icon-heart">&#10084;</div>
-              <h2>I Need Care</h2>
-              <p>
-                Sign up as a client to find qualified personal support workers who can provide the care you need.
-              </p>
-              <a href="/sign-up?type=client" class="button button-default">
-                Sign up as Client
-              </a>
+        <!-- Initial selection page -->
+        <div id="signup-selection">
+          <p class="center" style="font-size: 1.1em;">Please select how you would like to use our platform:</p>
+          <div class="grid">
+            <!-- Option 1: I Need Care -->
+            <div class="card">
+              <div class="card-inner">
+                <div class="icon icon-heart">&#10084;</div>
+                <h2>I Need Care</h2>
+                <p>
+                  Sign up as a client to find qualified personal support workers who can provide the care you need.
+                </p>
+                <button id="signup-button" data-type="client" class="button button-default">
+                  Sign up as Client
+                </button>
+              </div>
+            </div>
+            <!-- Option 2: I Provide Care -->
+            <div class="card">
+              <div class="card-inner">
+                <div class="icon icon-users">&#128101;</div>
+                <h2>I Provide Care</h2>
+                <p>
+                  Sign up as a Personal Support Worker (PSW) to connect with clients and offer your professional care
+                  services.
+                </p>
+                <button id="signup-psw-button" data-type="psw" class="button button-default">
+                  Sign up as PSW
+                </button>
+              </div>
             </div>
           </div>
-          <!-- Option 2: I Provide Care -->
-          <div class="card">
-            <div class="card-inner">
-              <div class="icon icon-users">&#128101;</div>
-              <h2>I Provide Care</h2>
-              <p>
-                Sign up as a Personal Support Worker (PSW) to connect with clients and offer your professional care
-                services.
-              </p>
-              <a href="/sign-up?type=psw" class="button button-default">
-                Sign up as PSW
-              </a>
-            </div>
+          <!-- Sign in section -->
+          <div class="center" style="margin-top: 30px;">
+            <p style="font-size: 1.1em;">Already have an account?</p>
+            <a href="/sign-in" class="button button-outline">
+              <span style="vertical-align:middle; margin-right: 5px;">&#128100;</span>
+              Sign in
+            </a>
           </div>
         </div>
-        <!-- Sign in section -->
-        <div class="center" style="margin-top: 30px;">
-          <p style="font-size: 1.1em;">Already have an account?</p>
-          <a href="/sign-in" class="button button-outline">
-            <span style="vertical-align:middle; margin-right: 5px;">&#128100;</span>
-            Sign in
-          </a>
+
+        <!-- Multi-step signup container -->
+        <div id="signup-container" class="hidden">
+          <!-- Progress indicator -->
+          <div class="progress-container">
+            <div id="step-indicator">Step 1 of 3</div>
+            <div class="progress-bar">
+              <div id="signup-progress" class="progress" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <!-- Step 1: Basic Information -->
+          <div id="signup-step-1" class="signup-step hidden">
+            <h2>Basic Information</h2>
+            <div class="form-group">
+              <label for="full-name">Full Name</label>
+              <input type="text" id="full-name" name="full-name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Create Password</label>
+              <input type="password" id="password" name="password" required>
+            </div>
+            <div class="button-container">
+              <button class="button button-outline" onclick="window.location.reload()">Cancel</button>
+              <button class="button button-default next-step-button">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Contact Information -->
+          <div id="signup-step-2" class="signup-step hidden">
+            <h2>Contact Information</h2>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" id="address" name="address" required>
+            </div>
+            <div class="button-container">
+              <button class="button button-outline prev-step-button">Back</button>
+              <button class="button button-default next-step-button">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Preferences -->
+          <div id="signup-step-3" class="signup-step hidden">
+            <h2>Your Preferences</h2>
+            <div class="form-group">
+              <label for="preferences">Care Preferences</label>
+              <textarea id="preferences" name="preferences" required></textarea>
+            </div>
+            <div class="button-container">
+              <button class="button button-outline prev-step-button">Back</button>
+              <button class="button button-default next-step-button">Complete Registration</button>
+            </div>
+          </div>
+
+          <!-- Completion Step -->
+          <div id="signup-completion" class="signup-step hidden">
+            <div class="completion-message">
+              <div class="icon icon-check">✓</div>
+              <h2>Registration Complete!</h2>
+              <p>Thank you for signing up with CareConnect. We've sent a confirmation email to your address.</p>
+              <button class="button button-default" onclick="window.location.href='dashboard.html'">
+                Go to Dashboard
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
