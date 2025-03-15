@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/auth.css">
+    <link rel="stylesheet" href="../../css/client.css">
+    <title>Client Signup - Step 2</title>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Client Signup - Step 2</h2>
+        <form id="client-signup-step2">
+            <label for="age-group">Select Your Age Group:</label>
+            <select id="age-group" name="age-group" required>
+                <option value="" disabled selected>Select your age group</option>
+                <option value="0-18">0-18</option>
+                <option value="19-35">19-35</option>
+                <option value="36-50">36-50</option>
+                <option value="51-65">51-65</option>
+                <option value="66+">66+</option>
+            </select>
+
+            <label for="care-type">Select the Type of Care Needed:</label>
+            <div id="care-type">
+                <input type="checkbox" id="personal-care" name="care-type" value="Personal Care">
+                <label for="personal-care">Personal Care</label>
+                <input type="checkbox" id="nursing-care" name="care-type" value="Nursing Care">
+                <label for="nursing-care">Nursing Care</label>
+                <input type="checkbox" id="companionship" name="care-type" value="Companionship">
+                <label for="companionship">Companionship</label>
+                <input type="checkbox" id="household-help" name="care-type" value="Household Help">
+                <label for="household-help">Household Help</label>
+            </div>
+
+            <label for="care-duration">Are you looking for Long-term or Short-term care?</label>
+            <select id="care-duration" name="care-duration" required>
+                <option value="" disabled selected>Select duration</option>
+                <option value="long-term">Long-term</option>
+                <option value="short-term">Short-term</option>
+            </select>
+
+            <button type="button" id="generate-task-card">Generate Task Card</button>
+            <div id="task-card-preview" style="display:none;">
+                <h3>Task Card Preview</h3>
+                <p id="task-card-details"></p>
+            </div>
+
+            <button type="submit">Confirm and Post Task Card</button>
+        </form>
+    </div>
+
+    <script src="../../js/client-signup.js"></script>
+</body>
+</html>

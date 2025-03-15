@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Platform</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Signup Platform</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Sign Up</h2>
+            <p>Please choose your role:</p>
+            <button id="clientSignup">Sign Up as Client</button>
+            <button id="pswSignup">Sign Up as PSW</button>
+        </section>
+    </main>
+    <script src="../js/main.js"></script>
+    <script>
+        document.getElementById('clientSignup').onclick = function() {
+            window.location.href = 'auth/signup.html';
+        };
+        document.getElementById('pswSignup').onclick = function() {
+            window.location.href = 'auth/signup.html';
+        };
+    </script>
+</body>
+</html>

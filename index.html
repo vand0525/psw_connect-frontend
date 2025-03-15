@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareConnect</title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <script type="module" src=".js/main.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h1>Welcome to CareConnect</h1>
+        <p>Connecting care providers with those who need support</p>
+      </div>
+      <div class="card-content">
+        <p class="center" style="font-size: 1.1em;">Please select how you would like to use our platform:</p>
+        <div class="grid">
+          <!-- Option 1: I Need Care -->
+          <div class="card">
+            <div class="card-inner">
+              <div class="icon icon-heart">&#10084;</div>
+              <h2>I Need Care</h2>
+              <p>
+                Sign up as a client to find qualified personal support workers who can provide the care you need.
+              </p>
+              <a href="/sign-up?type=client" class="button button-default">
+                Sign up as Client
+              </a>
+            </div>
+          </div>
+          <!-- Option 2: I Provide Care -->
+          <div class="card">
+            <div class="card-inner">
+              <div class="icon icon-users">&#128101;</div>
+              <h2>I Provide Care</h2>
+              <p>
+                Sign up as a Personal Support Worker (PSW) to connect with clients and offer your professional care
+                services.
+              </p>
+              <a href="/sign-up?type=psw" class="button button-default">
+                Sign up as PSW
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Sign in section -->
+        <div class="center" style="margin-top: 30px;">
+          <p style="font-size: 1.1em;">Already have an account?</p>
+          <a href="/sign-in" class="button button-outline">
+            <span style="vertical-align:middle; margin-right: 5px;">&#128100;</span>
+            Sign in
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
